@@ -1,0 +1,410 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root,
+  [data-theme="google-cloud"] {
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Google Cloud / Material 3 Daylight Palette */
+    --rp-canvas: #f8fafd;
+    --rp-canvas-glow-1: rgba(66, 133, 244, 0.08);
+    --rp-canvas-glow-2: rgba(52, 168, 83, 0.06);
+    --rp-surface: #ffffff;
+    --rp-surface-subtle: #f0f4f9;
+    --rp-surface-hover: #e8eef7;
+    --rp-sidebar: #f0f4f9;
+    --rp-header: rgba(255, 255, 255, 0.92);
+    --rp-border: #dde3ea;
+    --rp-border-strong: #c4cdd5;
+    --rp-ink: #1f1f1f;
+    --rp-ink-secondary: #444746;
+    --rp-ink-muted: #5f6368;
+    --rp-primary: #1a73e8;
+    --rp-primary-hover: #1557b0;
+    --rp-primary-soft: #d3e3fd;
+    --rp-primary-ink: #041e49;
+    --rp-ring: rgba(26, 115, 232, 0.32);
+    --rp-card-shadow: 0 1px 2px rgba(60, 64, 67, 0.05);
+    --rp-card-shadow-hover: 0 4px 14px -4px rgba(26, 115, 232, 0.14), 0 1px 3px rgba(60, 64, 67, 0.08);
+  }
+
+  [data-theme="google-gemini"] {
+    --rp-canvas: #f7f8fe;
+    --rp-canvas-glow-1: rgba(79, 70, 229, 0.06);
+    --rp-canvas-glow-2: rgba(13, 148, 136, 0.05);
+    --rp-surface: #ffffff;
+    --rp-surface-subtle: #eff1fb;
+    --rp-surface-hover: #e5e8fa;
+    --rp-sidebar: #f2f4fc;
+    --rp-header: rgba(255, 255, 255, 0.94);
+    --rp-border: #e0e4f5;
+    --rp-border-strong: #c5cbed;
+    --rp-ink: #181a2c;
+    --rp-ink-secondary: #3f4363;
+    --rp-ink-muted: #5b6082;
+    --rp-primary: #4f46e5;
+    --rp-primary-hover: #4338ca;
+    --rp-primary-soft: #e0e7ff;
+    --rp-primary-ink: #1e1b4b;
+    --rp-ring: rgba(79, 70, 229, 0.32);
+    --rp-card-shadow: 0 1px 2px rgba(30, 27, 75, 0.04);
+    --rp-card-shadow-hover: 0 4px 14px -4px rgba(79, 70, 229, 0.15), 0 1px 3px rgba(30, 27, 75, 0.06);
+  }
+
+  [data-theme="google-sage"] {
+    --rp-canvas: #f5f9f6;
+    --rp-canvas-glow-1: rgba(19, 115, 51, 0.06);
+    --rp-canvas-glow-2: rgba(0, 123, 131, 0.05);
+    --rp-surface: #ffffff;
+    --rp-surface-subtle: #ebf3ee;
+    --rp-surface-hover: #dfece4;
+    --rp-sidebar: #eef5f0;
+    --rp-header: rgba(255, 255, 255, 0.94);
+    --rp-border: #d7e5dc;
+    --rp-border-strong: #b8d2c2;
+    --rp-ink: #13221a;
+    --rp-ink-secondary: #334d3f;
+    --rp-ink-muted: #506b5c;
+    --rp-primary: #137333;
+    --rp-primary-hover: #0d652d;
+    --rp-primary-soft: #ceead6;
+    --rp-primary-ink: #072711;
+    --rp-ring: rgba(19, 115, 51, 0.32);
+    --rp-card-shadow: 0 1px 2px rgba(19, 34, 26, 0.04);
+    --rp-card-shadow-hover: 0 4px 14px -4px rgba(19, 115, 51, 0.15), 0 1px 3px rgba(19, 34, 26, 0.06);
+  }
+
+  [data-theme="google-dark"] {
+    --rp-canvas: #0c1018;
+    --rp-canvas-glow-1: rgba(66, 133, 244, 0.09);
+    --rp-canvas-glow-2: rgba(129, 201, 149, 0.05);
+    --rp-surface: #131924;
+    --rp-surface-subtle: #18202e;
+    --rp-surface-hover: #1e2839;
+    --rp-sidebar: #10151f;
+    --rp-header: rgba(16, 21, 31, 0.92);
+    --rp-border: #253044;
+    --rp-border-strong: #35455e;
+    --rp-ink: #f1f5f9;
+    --rp-ink-secondary: #cbd5e1;
+    --rp-ink-muted: #94a3b8;
+    --rp-primary: #4285f4;
+    --rp-primary-hover: #5a95f5;
+    --rp-primary-soft: rgba(66, 133, 244, 0.18);
+    --rp-primary-ink: #93bbfc;
+    --rp-ring: rgba(138, 180, 248, 0.42);
+    --rp-card-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.03) inset;
+    --rp-card-shadow-hover: 0 1px 0 0 rgba(255, 255, 255, 0.06) inset, 0 8px 20px -10px rgba(0, 0, 0, 0.65);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--rp-canvas);
+    color: var(--rp-ink);
+    letter-spacing: 0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--rp-primary);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.25);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.45);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Signature 4-Color Google Spectrum Hairline (used sparingly on brand & board reports) */
+.google-spectrum-bar {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #4285f4 0%,
+    #4285f4 25%,
+    #ea4335 25%,
+    #ea4335 50%,
+    #fbbc04 50%,
+    #fbbc04 75%,
+    #34a853 75%,
+    #34a853 100%
+  );
+}
+
+.studio-canvas {
+  background-color: var(--rp-canvas);
+  background-image:
+    radial-gradient(ellipse 75% 40% at 50% -12%, var(--rp-canvas-glow-1), transparent 68%),
+    radial-gradient(ellipse 45% 30% at 94% 4%, var(--rp-canvas-glow-2), transparent 62%);
+  color: var(--rp-ink);
+}
+
+.studio-card {
+  background-color: var(--rp-surface);
+  border: 1px solid var(--rp-border);
+  box-shadow: var(--rp-card-shadow);
+}
+
+.studio-card-hover {
+  transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.studio-card-hover:hover {
+  transform: translateY(-1px);
+  border-color: var(--rp-border-strong);
+  box-shadow: var(--rp-card-shadow-hover);
+}
+
+.gemini-aura {
+  background: linear-gradient(
+    135deg,
+    #1a73e8 0%,
+    #4f46e5 52%,
+    #0d9488 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-card-hover,
+  .studio-card-hover:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   Daylight Semantic Bridge for Legacy Sub-Pages (Cloud / Gemini / Earth)
+   Keeps .code-surface (SQL IDE & code blocks) and primary CTAs crisp & AA-safe
+   ========================================================================== */
+:root:not(.dark) .bg-\[\#111827\],
+:root:not(.dark) .bg-slate-900,
+:root:not(.dark) .bg-\[\#0d131f\],
+:root:not(.dark) .bg-\[\#0f1624\] {
+  background-color: var(--rp-surface);
+  border-color: var(--rp-border);
+}
+
+:root:not(.dark) .bg-\[\#0b0f17\],
+:root:not(.dark) .bg-slate-950,
+:root:not(.dark) .bg-slate-950\/60,
+:root:not(.dark) .bg-slate-950\/65,
+:root:not(.dark) .bg-slate-950\/70,
+:root:not(.dark) .bg-slate-950\/75,
+:root:not(.dark) .bg-slate-950\/80,
+:root:not(.dark) .bg-slate-950\/90,
+:root:not(.dark) .bg-\[\#111927\] {
+  background-color: var(--rp-surface-subtle);
+  border-color: var(--rp-border);
+}
+
+:root:not(.dark) .bg-slate-800,
+:root:not(.dark) .bg-slate-800\/80 {
+  background-color: var(--rp-surface-subtle);
+  color: var(--rp-ink);
+}
+
+:root:not(.dark) .bg-slate-800:hover,
+:root:not(.dark) .bg-slate-800\/80:hover {
+  background-color: var(--rp-surface-hover);
+}
+
+:root:not(.dark) .bg-\[\#1a2842\],
+:root:not(.dark) .bg-sky-950,
+:root:not(.dark) .bg-sky-950\/40,
+:root:not(.dark) .bg-sky-950\/50,
+:root:not(.dark) .bg-sky-950\/60,
+:root:not(.dark) .bg-sky-950\/30,
+:root:not(.dark) .bg-blue-950\/40,
+:root:not(.dark) .bg-blue-950\/50 {
+  background-color: var(--rp-primary-soft);
+  border-color: var(--rp-primary);
+  color: var(--rp-primary-ink);
+}
+
+:root:not(.dark) .bg-teal-950\/40,
+:root:not(.dark) .bg-teal-950\/50,
+:root:not(.dark) .bg-emerald-950\/60,
+:root:not(.dark) .bg-emerald-950\/80,
+:root:not(.dark) .bg-emerald-950\/40,
+:root:not(.dark) .bg-emerald-950\/30 {
+  background-color: #e6f4ea;
+  border-color: #a8dab5;
+  color: #137333;
+}
+
+:root:not(.dark) .bg-amber-950\/50,
+:root:not(.dark) .bg-amber-950\/70,
+:root:not(.dark) .bg-amber-950\/40,
+:root:not(.dark) .bg-amber-950\/30 {
+  background-color: #fef7e0;
+  border-color: #fde293;
+  color: #b06000;
+}
+
+:root:not(.dark) .bg-violet-950\/70,
+:root:not(.dark) .bg-violet-950\/40,
+:root:not(.dark) .bg-indigo-950\/40,
+:root:not(.dark) .bg-indigo-950\/50 {
+  background-color: #f3e8fd;
+  border-color: #d7aefb;
+  color: #7627bb;
+}
+
+:root:not(.dark) .bg-rose-950\/40,
+:root:not(.dark) .bg-rose-950\/50,
+:root:not(.dark) .bg-rose-950\/30,
+:root:not(.dark) .bg-red-950\/50,
+:root:not(.dark) .bg-red-950\/60 {
+  background-color: #fce8e6;
+  border-color: #f6aea9;
+  color: #c5221f;
+}
+
+:root:not(.dark) .text-slate-50,
+:root:not(.dark) .text-slate-100 {
+  color: var(--rp-ink);
+}
+
+:root:not(.dark) .text-slate-200,
+:root:not(.dark) .text-slate-300 {
+  color: var(--rp-ink-secondary);
+}
+
+:root:not(.dark) .text-slate-400,
+:root:not(.dark) .text-slate-500 {
+  color: var(--rp-ink-muted);
+}
+
+:root:not(.dark) .text-\[\#8ab4f8\],
+:root:not(.dark) .text-sky-400,
+:root:not(.dark) .text-sky-300,
+:root:not(.dark) .text-sky-200,
+:root:not(.dark) .text-blue-400,
+:root:not(.dark) .text-blue-300,
+:root:not(.dark) .text-blue-200 {
+  color: var(--rp-primary);
+}
+
+:root:not(.dark) .text-teal-400,
+:root:not(.dark) .text-teal-300,
+:root:not(.dark) .text-emerald-400,
+:root:not(.dark) .text-emerald-300,
+:root:not(.dark) .text-emerald-200 {
+  color: #137333;
+}
+
+:root:not(.dark) .text-violet-400,
+:root:not(.dark) .text-violet-300,
+:root:not(.dark) .text-indigo-400,
+:root:not(.dark) .text-indigo-300 {
+  color: #6b21a8;
+}
+
+:root:not(.dark) .text-amber-400,
+:root:not(.dark) .text-amber-300,
+:root:not(.dark) .text-amber-200 {
+  color: #b06000;
+}
+
+:root:not(.dark) .text-rose-400,
+:root:not(.dark) .text-rose-300,
+:root:not(.dark) .text-rose-200,
+:root:not(.dark) .text-red-400,
+:root:not(.dark) .text-red-300,
+:root:not(.dark) .text-red-200 {
+  color: #c5221f;
+}
+
+:root:not(.dark) .border-slate-800,
+:root:not(.dark) .border-slate-800\/90,
+:root:not(.dark) .border-slate-800\/80,
+:root:not(.dark) .border-slate-800\/70,
+:root:not(.dark) .border-slate-700,
+:root:not(.dark) .border-slate-700\/80 {
+  border-color: var(--rp-border);
+}
+
+:root:not(.dark) .divide-slate-800\/70 > :not(:last-child),
+:root:not(.dark) .divide-slate-800\/80 > :not(:last-child),
+:root:not(.dark) .divide-slate-800\/60 > :not(:last-child) {
+  border-color: var(--rp-border);
+}
+
+/* Preserve crisp dark IDE readability inside SQL Editor code frames in all themes */
+.code-surface {
+  background-color: #0e1421 !important;
+  color: #e2e8f0 !important;
+  border-color: #1f2937 !important;
+}
+
+.code-surface .code-gutter {
+  background-color: #090d16 !important;
+  color: #64748b !important;
+  border-color: #1e293b !important;
+}
+
+.code-surface textarea,
+.code-surface pre {
+  color: #e0f2fe !important;
+  background-color: transparent !important;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #1f1f1f !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  #executive-board-report-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #1f1f1f !important;
+  }
+}

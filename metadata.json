@@ -1,0 +1,6 @@
+{
+  "name": "RetailPulse Enterprise",
+  "description": "Production-grade E-Commerce Business Intelligence and Customer Analytics platform powered by DuckDB, SQL analytical pipelines, and server-side Gemini intelligence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,19 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Runtime DuckDB warehouse & out-of-core spill files
+data/
+*.duckdb
+*.duckdb.wal
+*.duckdb.tmp
+
+# Local tooling & workspace artifacts
+.aistudio/
+.playwright-cli/
+
